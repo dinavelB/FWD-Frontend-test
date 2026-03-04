@@ -4,11 +4,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Ellipsis, LogOut } from "lucide-react";
 
-import type { UserRole, Menu as MenuType, Group } from "../../../../lib/ui/sidebar/types";
+import type { Menu as MenuType, Group } from "../../../../lib/ui/sidebar/types";
 import { cn } from "@/lib/util/utils";
 import { getMenuList, RoleRoutes } from "@/lib/ui/sidebar/index";
 import { Button } from "@/components/shared/ui/button";
 import { CollapseMenuButton } from "@/components/shared/layout/panel/collapse-menu-button";
+import type { UserRole } from "@/lib/util/roles";
 import {
   Tooltip,
   TooltipTrigger,

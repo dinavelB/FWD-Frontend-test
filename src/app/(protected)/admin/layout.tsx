@@ -1,11 +1,9 @@
-import { requireAuth } from "@/lib/server/auth";
 import { ReactNode } from "react";
 import { UserProvider} from "@/components/shared/providers/UserContext"
-import {redirect} from "next/navigation"
+import { requireRole, UserRole } from "@/lib/util/roles";
 
 export default async function AdminLayout({children}: {children: ReactNode}){
-    const user = await requireAuth();
-    if (user.role !== "ADMIN") redirect("/unauthorized");
+   const user = await requireRole(UserRole.ADMIN);
 
     return(
         <UserProvider user={user}>

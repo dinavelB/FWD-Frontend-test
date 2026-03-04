@@ -1,6 +1,7 @@
 import { headers } from "next/headers";
+import { AuthUser } from "../util/roles";
 
-export async function verifyToken() {
+export async function verifyToken(): Promise<AuthUser> {
   const headersList = await headers();
   const cookie = headersList.get("cookie");
 
@@ -18,6 +19,6 @@ export async function verifyToken() {
   if (!response.ok) {
     throw new Error("Invalid token");
   }
-
-  return response.json();
+  const data: AuthUser = await response.json();
+  return data;
 }

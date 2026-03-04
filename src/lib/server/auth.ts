@@ -1,11 +1,13 @@
 import { redirect } from "next/navigation"
 import { verifyToken } from "./auth-server"
+import { UserRole, AuthUser } from "../util/roles";
 
-export async function requireAuth() {
+export async function requireAuth(): Promise<AuthUser> {
+
   if (process.env.NODE_ENV === "development") {
     return {
       id: "1",
-      role: "SUPER_ADMIN",
+      role: UserRole.ADMIN,
       employeeId: "FWD123",
       firstname: "Dinavel",
       lastname: "Binongo",

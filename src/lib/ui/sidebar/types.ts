@@ -1,7 +1,5 @@
 import { LucideIcon } from "lucide-react";
 
-export type UserRole = "SUPER_ADMIN" | "ADMIN" | "EMPLOYEE";
-
 export type Submenu = {
   href: string;
   label: string;
