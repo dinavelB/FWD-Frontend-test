@@ -15,17 +15,12 @@ import {
   SheetTitle
 } from "@/components/shared/ui/sheet";
 
+import { RoleRoutes } from "@/lib/ui/sidebar/index";
+
 export function SheetMenu() {
   const user = useUser();
-  type Role = "SUPER_ADMIN" | "ADMIN" | "EMPLOYEE";
 
-  const roleRoutes: Record<Role, string> = {
-    SUPER_ADMIN: "/super-admin",
-    ADMIN: "/admin",
-    EMPLOYEE: "/employee",
-  };
-
-  const logoLink = roleRoutes[user.role as Role];
+  const logoLink = RoleRoutes[user.role];
 
   return (
     <Sheet>
@@ -34,7 +29,7 @@ export function SheetMenu() {
           <MenuIcon size={20} />
         </Button>
       </SheetTrigger>
-      <SheetContent className="sm:w-72 px-3 h-full flex flex-col" side="left">
+      <SheetContent className="w-60 sm:w-68 px-3 h-full flex flex-col" side="left">
         {/* Logo + Role */}
         <SheetHeader>
           <VisuallyHidden>

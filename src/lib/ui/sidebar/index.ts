@@ -21,3 +21,10 @@ export function getMenuList(role: UserRole): Group[] {
       return [];
   }
 }
+
+export const AccountRoutes: Record<UserRole, string> = {
+    SUPER_ADMIN: "/super-admin/account",
+    ADMIN: "/admin/account",
+    EMPLOYEE: "/employee/account",
+};
+

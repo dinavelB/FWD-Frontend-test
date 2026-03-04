@@ -20,8 +20,25 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from "@/components/shared/ui/dropdown-menu";
+import { useUser } from "../../providers/UserContext";
+import { RoleRoutes, AccountRoutes } from "@/lib/ui/sidebar/index"
 
 export function UserNav() {
+  //user details
+  const user = useUser();
+  const firstName = user.firstname;
+  const lastname = user.lastname;
+  const fullName =  `${firstName} ${lastname}`;
+  
+  const initialFirstname = firstName?.charAt(0);
+  const initialLastname = lastname?.charAt(0);
+
+  const initials = `${initialFirstname}${initialLastname}`
+  
+  //navigations for dropdown
+  const dashboardNavigation = RoleRoutes[user.role];
+  const accountNavigation = AccountRoutes[user.role];
+  
   return (
     <DropdownMenu>
       <TooltipProvider disableHoverableContent>
@@ -34,7 +51,7 @@ export function UserNav() {
               >
                 <Avatar className="h-8 w-8">
                   <AvatarImage src="#" alt="Avatar" />
-                  <AvatarFallback className="bg-transparent">JD</AvatarFallback>
+                  <AvatarFallback className="bg-transparent">{initials}</AvatarFallback>
                 </Avatar>
               </Button>
             </DropdownMenuTrigger>
@@ -46,22 +63,22 @@ export function UserNav() {
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">John Doe</p>
+            <p className="text-sm font-medium leading-none"> {fullName}</p>
             <p className="text-xs leading-none text-muted-foreground">
-              johndoe@example.com
+              {user.email}
             </p>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem className="hover:cursor-pointer" asChild>
-            <Link href="/dashboard" className="flex items-center">
+            <Link href={dashboardNavigation} className="flex items-center">
               <LayoutGrid className="w-4 h-4 mr-3 text-muted-foreground" />
               Dashboard
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem className="hover:cursor-pointer" asChild>
-            <Link href="/account" className="flex items-center">
+            <Link href={accountNavigation} className="flex items-center">
               <User className="w-4 h-4 mr-3 text-muted-foreground" />
               Account
             </Link>

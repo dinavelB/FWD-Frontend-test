@@ -7,8 +7,9 @@ export async function requireAuth() {
       id: "1",
       role: "SUPER_ADMIN",
       employeeId: "FWD123",
-      firstname: "Jessa",
-      lastname: "Gozun",
+      firstname: "Dinavel",
+      lastname: "Binongo",
+      email: "dinavelbinongo@gmail.com"
     };
   }
 

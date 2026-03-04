@@ -8,7 +8,7 @@ import { useSidebar } from "@/lib/hooks/use-sidebar";
 import { useStore } from "@/lib/hooks/use-store";
 import { cn } from "@/lib/util/utils";
 import { useUser } from "@/components/shared/providers/UserContext";
-import { RoleRoutes } from "@/lib/sidebar/index"
+import { RoleRoutes } from "@/lib/ui/sidebar/index"
 
 export function Sidebar() {
   const user = useUser();
