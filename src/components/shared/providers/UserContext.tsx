@@ -1,24 +1,19 @@
 "use client"
 
-import { UserRole } from "@/lib/ui/sidebar/types"
+import type { AuthUser } from "@/lib/util/roles"
 import { createContext, useContext } from "react"
 
-export type User = {
-    id: string
-    role: UserRole
-    employeeId: string
-    firstname?: string
-    lastname?:string
-    email?: string;
-}
-
-const UserContext = createContext<User | null>(null)
+const UserContext = createContext<AuthUser | null>(null)
 
 export function UserProvider({user, children}: {
-    user: User
+    user: AuthUser
     children: React.ReactNode
 }) {
-    return <UserContext.Provider value={user}>{children}</UserContext.Provider>
+    return (
+        <UserContext.Provider value={user}>
+            {children}
+        </UserContext.Provider>
+    );
 }
 
 export function useUser() {
