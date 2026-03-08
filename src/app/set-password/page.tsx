@@ -1,0 +1,51 @@
+"use client"
+
+import InvitationExpired from "@/components/shared/features/InvitationExpired";
+import SetPasswordForm from "@/components/shared/features/SetPassword";
+import { validateInvitation } from "@/lib/api/authApi.ts/invitation";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { SkeletonForm } from "@/components/shared/skeletons/Form";
+import Header from "@/components/shared/layout/Header";
+
+export default function SetPassword() {
+
+    const searchParams = useSearchParams();
+    const token = searchParams.get("token");
+    const [status, setStatus] = useState<"loading" | "valid" | "expired">("loading");
+    const [employeeId, setEmployeeId] = useState<string | null>(null);
+
+    useEffect(() => {
+        if (!token) {
+            setStatus("expired");
+            return;
+        }
+
+        const validate = async () => {
+            try {
+                const response = await validateInvitation(token);
+                setEmployeeId(response.employeeId);
+                setStatus("valid");
+            } catch(err) {
+                setStatus("expired");
+            }
+        }
+
+        validate();
+    }, [token]);
+
+    return (
+        <div className="hero-section pt-6 flex flex-col gap-8">
+            <Header />
+            <main className="flex w-full flex-col items-center justify-start px-6 pb-16">
+                <div className="w-full max-w-md">
+                    {status === "loading" && <SkeletonForm/>}
+                    {status === "valid" && token && employeeId && ( 
+                        <SetPasswordForm token={token} employeeId={employeeId}/>
+                    )}
+                    {status === "expired" && <InvitationExpired />}
+                </div>
+            </main>
+        </div>
+    );
+}

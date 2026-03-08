@@ -97,3 +97,7 @@ npx shadcn@latest add dialog
 
 ### Login Form
 npx shadcn@latest add login-01
+
+### Skeleton
+npx shadcn@latest add skeleton
+- for loading states
