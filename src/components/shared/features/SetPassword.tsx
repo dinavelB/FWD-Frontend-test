@@ -28,9 +28,9 @@ export default function SetPasswordForm({token, employeeId } : InvitationValues)
     const onSubmit = async (data: RegisterSchema) => {
         try {
             await setPassword(token, data.password);
-            toast.success("Account created successfully! Please login.")
+            toast.success("Account created successfully! Redirecting to login...")
             setTimeout(() => {
-                router.replace("/"); // redirect to landing page
+                router.replace("/");
             }, 1500);
             
         } catch(err: any) {
@@ -44,10 +44,10 @@ export default function SetPasswordForm({token, employeeId } : InvitationValues)
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     return (
-        <div className="flex flex-col gap-6">
-            <Card className="h-full py-10 px-6">
+        <div className="flex flex-col gap-6 items-center">
+            <Card className="h-full w-full max-w-sm sm:max-w-md md:max-w-lg py-8 px-6 sm:py-10">
                 <CardHeader className="text-center">
-                    <CardTitle className="text-2xl">Create your Account</CardTitle>
+                    <CardTitle className="text-xl sm:text-2xl">Create your Account</CardTitle>
                     <CardDescription>Please set your password</CardDescription>
                 </CardHeader>
 
@@ -65,7 +65,7 @@ export default function SetPasswordForm({token, employeeId } : InvitationValues)
                                     <Input type={showPassword ? "text" : "password"}
                                     id="password"
                                     {...register("password")}
-                                />
+                                    />
 
                                     <button 
                                     type="button"
