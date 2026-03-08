@@ -1,6 +1,6 @@
 export type AddAdminFormValues = {
     employeeId: string
-    firstName: string
-    lastName: string
+    firstname: string
+    lastname: string
     email: string
 }
