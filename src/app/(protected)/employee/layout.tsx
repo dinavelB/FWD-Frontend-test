@@ -5,7 +5,6 @@ import { requireRole } from "@/lib/server/auth"
 
 type Props = {
   children: ReactNode
-  params: { employeeId: string }
 }
 
 export default async function EmployeeLayout({ children}: Props) {
