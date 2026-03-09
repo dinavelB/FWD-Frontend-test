@@ -1,7 +1,8 @@
 import { AddAdminFormValues } from "@/lib/types/create-admin";
+import { API_BASE_URL } from "@/lib/util/api";
 
 export async function createAdmin(data: AddAdminFormValues) {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/create-admin-account`, {
+    const response = await fetch(`${API_BASE_URL}/users/create-admin-account`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

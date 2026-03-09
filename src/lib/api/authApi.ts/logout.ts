@@ -1,10 +1,11 @@
 import { useRouter } from "next/navigation";
+import { API_BASE_URL } from "@/lib/util/api";
 
 export function useLogout() {
     const router = useRouter();
 
     const logout = async () => {
-        await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`, {
+        await fetch(`${API_BASE_URL}/auth/logout`, {
             method: 'POST'
         });
 

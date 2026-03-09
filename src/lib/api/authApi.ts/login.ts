@@ -1,8 +1,9 @@
 import { getAuthError } from "@/lib/util/authError";
 import { LoginCredentials } from "@/lib/types/roles";
+import { API_BASE_URL } from "@/lib/util/api";
 
 export async function loginAuth(data: LoginCredentials) {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
+  const response = await fetch(`${API_BASE_URL}/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
@@ -18,7 +19,7 @@ export async function loginAuth(data: LoginCredentials) {
 
 export async function getUser() {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/me`, {
+    const response = await fetch(`${API_BASE_URL}/auth/me`, {
       method: "GET",
       credentials: "include",
     });
