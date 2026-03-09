@@ -1,3 +1,5 @@
+"use client"
+
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/shared/ui/card"
 import {Field, FieldGroup, FieldLabel} from "@/components/shared/ui/field"
 import { Input } from "@/components/shared/ui/input"

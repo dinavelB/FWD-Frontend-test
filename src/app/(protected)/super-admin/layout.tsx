@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { ReactNode } from "react";
 import { UserProvider} from "@/components/shared/providers/UserContext"
 import { requireRole } from "@/lib/server/auth"

@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { Toaster } from "sonner"
 export const metadata = {
     title: "Set Password",

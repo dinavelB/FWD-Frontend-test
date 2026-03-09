@@ -68,3 +68,13 @@ const context = useContext(UserContext);
 * Local state - inside one component
 * Context state (global state) - shared but simple (ex: createContext), this is for rarely changes states, ex is authentication
 * External store - ex is Zustand, it is for frequently changing states like dashboard and notifications
+
+## force-dynamic
+- We need to include at the top of the layout.tsx because Next.js App Router layouts/pages are server components and try to prerender child pages statically whenever possible. But if your page or child component needs client-only features (like useSearchParams, useState, useEffect, browser APIs), static prerendering fails.
+
+- dynamic = "force-dynamic" tells Next.js: “Hey! Don’t try to statically prerender this layout or its children. Always treat it as dynamic at runtime.”
+
+- When do we need it:
+* Server layout + client page = dynamic needed
+* Server layout + server page = static OK
+* Client layout/page = dynamic by default, no need to declare
