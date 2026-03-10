@@ -35,7 +35,7 @@ export default function SetPassword() {
     }, [token]);
 
     return (
-        <div className="hero-section pt-6 flex flex-col gap-8">
+        <div className="hero-section flex flex-col gap-8">
             <Header />
             <main className=" transition-opacity duration-300 ease-in-out flex w-full flex-col items-center justify-start px-6 pb-16">
                 <div className="w-full max-w-md mt-10 sm:mt-8">

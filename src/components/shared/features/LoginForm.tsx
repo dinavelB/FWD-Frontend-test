@@ -75,7 +75,7 @@ export default function Login() {
                 {errors.employeeId && <FormMessage variant="error" message={errors.employeeId.message}/>}
               </Field>
               <Field>
-                <div className="flex items-center">
+                <div className="flex items-center justify-center gap-2">
                   <FieldLabel htmlFor="password">Password</FieldLabel>
                   <Link
                     href="/forgot-password"
