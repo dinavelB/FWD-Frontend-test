@@ -1,11 +1,14 @@
+"use client"
+
+import { ContentLayout } from "@/components/shared/layout/panel/content-layout";
+import {useUser} from "@/components/shared/providers/UserContext"
 export default function AdminDashboard() {
+    const user = useUser();
     return(
-        <>
-        <main className="flex w-full flex-col items-center justify-start px-6 pb-16">
-            <div className="w-full max-w-md">
-                CONGRATS, YOU ARE NOW IN ADMIN DASHBOARD 😜
-            </div>
-        </main>
-    </>
-    )
+    <ContentLayout title="Dashboard">
+        <div>
+            HELLO, {user.firstname}!
+        </div>
+    </ContentLayout>
+    );
 }

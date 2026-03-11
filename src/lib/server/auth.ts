@@ -7,9 +7,9 @@ export async function requireAuth(): Promise<AuthUser> {
   if (process.env.NODE_ENV === "development") {
     return {
       id: "1",
-      role: UserRole.SUPER_ADMIN,
+      role: UserRole.ADMIN,
       employeeId: "FWD123",
-      firstname: "Dinavel",
+      firstname: "JJ",
       lastname: "Binongo",
       email: "dinavelbinongo@gmail.com"
     };

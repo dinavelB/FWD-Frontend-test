@@ -3,8 +3,14 @@ import {
   Users,
   ClipboardCheck,
   FileBarChart,
-  User
+  User,
+  Calendar1,
+  PhilippinePeso,
+  Wallet
 } from "lucide-react";
+
+
+const defaultPath: string = "/admin"
 
 import { Group } from "./types";
 
@@ -12,31 +18,24 @@ export const ADMIN_SIDEBAR: Group[] = [
   {
     groupLabel: "",
     menus: [
-      { href: "/dashboard", label: "Dashboard", icon: LayoutGrid, isRoot: true}
+      { href: defaultPath, label: "Dashboard", icon: LayoutGrid, isRoot: true}
     ]
   },
   {
-    groupLabel: "Management",
+    groupLabel: "Modules",
     menus: [
-      { href: "/employees", label: "Employee Management", icon: Users }
+      { href: `${defaultPath}/attendance`, label: "Attendance", icon: ClipboardCheck },
+      { href: `${defaultPath}/employees`, label: "Employees", icon: Users},
+      { href: `${defaultPath}/leave`, label: "Leave", icon: Calendar1},
+      { href: `${defaultPath}/cash-advance`, label: "Cash Advance", icon: PhilippinePeso},
+      { href: `${defaultPath}/reimbursement`, label: "Reimbursement", icon: Wallet},
+      { href: `${defaultPath}/reports`, label: "All Reports", icon: FileBarChart }
     ]
   },
   {
-    groupLabel: "Attendance",
+    groupLabel: "Personal",
     menus: [
-      { href: "/attendance", label: "All Attendance", icon: ClipboardCheck }
-    ]
-  },
-  {
-    groupLabel: "Reports",
-    menus: [
-      { href: "/reports", label: "All Reports", icon: FileBarChart }
-    ]
-  },
-  {
-    groupLabel: "Account",
-    menus: [
-      { href: "/account", label: "Profile", icon: User }
+      { href: `${defaultPath}/account`, label: "Account", icon: User }
     ]
   }
 ];

@@ -30,7 +30,7 @@ export const SUPER_ADMIN_SIDEBAR: Group[] = [
     ]
   },
   {
-    groupLabel: "Others",
+    groupLabel: "Personal",
     menus: [
       { href: `${defaultPath}/account`, label: "Account", icon: User }
     ]

@@ -2,12 +2,12 @@
 
 import { ContentLayout } from "@/components/shared/layout/panel/content-layout";
 import {useUser} from "@/components/shared/providers/UserContext"
-export default function SuperAdminDashboard() {
+export default function AdminReimbursement() {
     const user = useUser();
+    
     return(
-    <ContentLayout title="Dashboard">
+    <ContentLayout title="Reimbursement Management">
         <div>
-            HELLO, {user.firstname}!
         </div>
     </ContentLayout>
     );
