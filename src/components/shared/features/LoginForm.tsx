@@ -28,9 +28,9 @@ export default function Login() {
     try {
       const loginError = await loginAuth(data);
 
-      if (loginError) {
-        setErrorMsg(loginError)
-        return
+      if (loginError !== null) {
+        setErrorMsg(loginError);
+        return;
       }
 
       const { user, error }= await getUser();
