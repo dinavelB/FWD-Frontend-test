@@ -30,17 +30,19 @@ export default function SetPasswordForm({token, employeeId } : InvitationValues)
     const onSubmit = async (data: RegisterSchema) => {
         try {
             await setPassword(token, data.password);
-            toast.success("Account created successfully! Redirecting to login...")
+            toast.success("Your account has been activated! Redirecting you to login...")
             setTimeout(() => {
                 router.replace("/");
-            }, 1500);
+            }, 3000);
             
-        } catch(err: any) {
-            console.error(err);
-            toast.error(err.message || "Something went wrong");
+        } catch(err: unknown) {
+        if (err instanceof Error) {
+            toast.error(err.message);
+        } else {
+            toast.error("Something went wrong");
+        }
         }
     }
-
     //show/unhide passwords
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -49,8 +51,8 @@ export default function SetPasswordForm({token, employeeId } : InvitationValues)
         <div className="flex flex-col gap-6 items-center">
             <Card className="h-full w-full max-w-sm sm:max-w-md md:max-w-lg py-8 px-6 sm:py-10">
                 <CardHeader className="text-center">
-                    <CardTitle className="text-xl sm:text-2xl">Create your Account</CardTitle>
-                    <CardDescription>Please set your password</CardDescription>
+                    <CardTitle className="text-xl sm:text-2xl">Activate Your Account</CardTitle>
+                    <CardDescription>Set your password to activate your FWD Portal account.</CardDescription>
                 </CardHeader>
 
                 <CardContent>
@@ -58,7 +60,8 @@ export default function SetPasswordForm({token, employeeId } : InvitationValues)
                         <FieldGroup>
                             <Field>
                                 <FieldLabel htmlFor="employeeId">Employee ID</FieldLabel>
-                                <Input value={employeeId} readOnly/>
+                                <Input id="employeedId" value={employeeId} readOnly 
+                                className="bg-muted cursor-not-allowed"/>
                             </Field> 
 
                             <Field>
@@ -66,6 +69,7 @@ export default function SetPasswordForm({token, employeeId } : InvitationValues)
                                 <div className="relative">
                                     <Input type={showPassword ? "text" : "password"}
                                     id="password"
+                                    autoComplete="new-password"
                                     {...register("password")}
                                     />
 
@@ -89,13 +93,14 @@ export default function SetPasswordForm({token, employeeId } : InvitationValues)
                                     <Input 
                                     type={showConfirmPassword ? "text" : "password"}
                                     id="confirmPassword"
+                                    autoComplete="new-password"
                                     {...register("confirmPassword")}
                                     />
 
                                     <button
                                     type="button"
                                     onClick={() => setShowConfirmPassword((prev) => !prev)}
-                                    aria-label={showPassword ? "Hide password" : "Show password"}
+                                    aria-label={showConfirmPassword ? "Hide password" : "Show password"}
                                     className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
                                     >
                                         {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
@@ -107,7 +112,7 @@ export default function SetPasswordForm({token, employeeId } : InvitationValues)
 
                             <Field>
                                 <Button type="submit" disabled={isSubmitting}>
-                                    {isSubmitting ? "Creating Account..." : "Create Account"}
+                                    {isSubmitting ? "Activating..." : "Activate Account"}
                                 </Button>
                             </Field>
                         </FieldGroup>

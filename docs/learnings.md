@@ -78,3 +78,15 @@ const context = useContext(UserContext);
 * Server layout + client page = dynamic needed
 * Server layout + server page = static OK
 * Client layout/page = dynamic by default, no need to declare
+
+## autoComplete
+- autoComplete tells the browser how to automatically fill or suggest values for an input field.
+- It helps browsers and password managers (Chrome, Safari, 1Password, etc.) know what kind of data the field expects.
+* Example: Login
+- the browser may autofill saved email/username, current pass
+<Input type="text" autoComplete="username" />
+<Input type="password" autoComplete="current-password" />
+
+* Example: Sign up
+- tells browser that the user is creating a password and might suggest a strong one.
+<Input type="password" autoComplete="new-password">
