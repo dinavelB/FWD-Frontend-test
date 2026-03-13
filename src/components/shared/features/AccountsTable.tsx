@@ -2,7 +2,7 @@ import { Table, TableHeader, TableBody, TableHead, TableRow, TableCell } from "@
 import type { AccountInfo } from "@/lib/types/account";
 import { formatDateTime } from "@/lib/util/date-format";
 import { fullName } from "@/lib/util/name-format";
-import { Actions } from "./Actions";
+import { Actions } from "./AccountTblActions";
 
 const admins: AccountInfo[]= [
     {

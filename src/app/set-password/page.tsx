@@ -2,7 +2,7 @@
 
 import InvitationExpired from "@/components/shared/features/InvitationExpired";
 import SetPasswordForm from "@/components/shared/features/SetPassword";
-import { validateInvitation } from "@/lib/api/authApi.ts/invitation";
+import { validateInvitation } from "@/lib/api/shared/authApi.ts/invitation";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SkeletonForm } from "@/components/shared/skeletons/Form";

@@ -1,6 +1,6 @@
 "use client";
 
-import { useLogout } from "@/lib/api/authApi.ts/logout";
+import { useLogout } from "@/lib/api/shared/authApi.ts/logout";
 import {
   Dialog,
   DialogContent,

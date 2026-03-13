@@ -11,7 +11,7 @@ import type { RegisterSchema } from "@/lib/util/password-validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
-import { setPassword } from "@/lib/api/authApi.ts/invitation"
+import { setPassword } from "@/lib/api/shared/authApi.ts/invitation"
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
