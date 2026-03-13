@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { SignOutButton } from "@/components/shared/layout/panel/menu";
-import LogoutModal from "@/components/shared/features/LogoutModal";
+import LogoutModal from "@/components/shared/features/auth/LogoutModal";
 
 export function SheetSignOut() {
   const [open, setOpen] = useState(false);

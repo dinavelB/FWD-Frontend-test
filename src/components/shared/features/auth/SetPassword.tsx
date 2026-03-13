@@ -5,13 +5,13 @@ import {Field, FieldGroup, FieldLabel} from "@/components/shared/ui/field"
 import { Input } from "@/components/shared/ui/input"
 import { Button } from "@/components/shared/ui/button"
 import { useForm } from "react-hook-form";
-import { FormMessage } from "../ui/form-message";
+import { FormMessage } from "../../ui/form-message";
 import { registerSchema } from "@/lib/util/password-validation";
 import type { RegisterSchema } from "@/lib/util/password-validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
-import { setPassword } from "@/lib/api/shared/authApi.ts/invitation"
+import { setPassword } from "@/lib/api/shared/auth/invitation"
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 

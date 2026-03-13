@@ -4,7 +4,7 @@ import Link from "next/link";
 import { MenuIcon} from "lucide-react";
 import { VisuallyHidden } from "@/components/shared/ui/visually-hidden";
 import { Button } from "@/components/shared/ui/button";
-import { Menu, SignOutButton } from "@/components/shared/layout/panel/menu";
+import { Menu } from "@/components/shared/layout/panel/menu";
 import { useUser } from "@/components/shared/providers/UserContext";
 import { ScrollArea } from "@/components/shared/ui/scroll-area";
 import {
@@ -15,7 +15,7 @@ import {
   SheetTitle
 } from "@/components/shared/ui/sheet";
 import { RoleRoutes } from "@/lib/ui/sidebar/index";
-import { SheetSignOut } from "../../features/SheetSignout";
+import { SheetSignOut } from "../../features/auth/SheetSignout";
 
 export function SheetMenu() {
   const user = useUser();

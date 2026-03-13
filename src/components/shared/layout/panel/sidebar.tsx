@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu, SignOutButton } from "@/components/shared/layout/panel/menu";
+import { Menu } from "@/components/shared/layout/panel/menu";
 import { SidebarToggle } from "@/components/shared/layout/panel/sidebar-toggle";
 import { ScrollArea } from "@/components/shared/ui/scroll-area";
 import Link from "next/link";
@@ -9,7 +9,7 @@ import { useStore } from "@/lib/hooks/use-store";
 import { cn } from "@/lib/util/utils";
 import { useUser } from "@/components/shared/providers/UserContext";
 import { RoleRoutes } from "@/lib/ui/sidebar/index"
-import { SidebarSignOut } from "../../features/SidebarSignout";
+import { SidebarSignOut } from "../../features/auth/SidebarSignout";
 
 export function Sidebar() {
   const user = useUser();

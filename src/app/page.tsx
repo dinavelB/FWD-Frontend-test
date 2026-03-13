@@ -1,4 +1,4 @@
-import Login  from "@/components/shared/features/LoginForm";
+import Login  from "@/components/shared/features/auth/LoginForm";
 import Header from "@/components/shared/layout/Header";
 
 export default function Home() {

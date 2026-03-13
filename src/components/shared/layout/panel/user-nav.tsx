@@ -23,7 +23,7 @@ import {
 import { useUser } from "../../providers/UserContext";
 import { RoleRoutes, AccountRoutes } from "@/lib/ui/sidebar/index"
 import { useState } from "react";
-import LogoutModal from "@/components/shared/features/LogoutModal";
+import LogoutModal from "@/components/shared/features/auth/LogoutModal";
 
 export function UserNav() {
   //user details
