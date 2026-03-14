@@ -126,4 +126,7 @@ const context = useContext(UserContext);
   * useQuery - fetch data
   * useMutation - change data
   
-
+## Boolean conversion
+- we use !! dobuble NOT operator to convert something as a boolean. 
+ex: const isError = !!error
+- if error value is falsy, it will be false. if truthy, converts it to true.

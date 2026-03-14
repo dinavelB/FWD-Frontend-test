@@ -10,8 +10,8 @@ import { useAccounts } from "@/lib/hooks/useAccount";
 
 export default function AdminManagement() {
     const [ open, setOpen ] = useState(false);
-    const { data: accounts = [], isLoading, error } = useAccounts(UserRole.ADMIN);
-
+    const { data: accounts = [], isLoading, error } = useAccounts(UserRole.ADMIN); // rename data property as accounts with an empty array
+    
     return(
         <ContentLayout title="Admin Management">
             <div className="flex flex-col gap-8">
@@ -24,7 +24,9 @@ export default function AdminManagement() {
                 <AccountsTable 
                     accounts={accounts}
                     loading= {isLoading}
-                    error= {!!error}
+                    error= {!!error} 
+                    // !! is a boolean conversion, ex: convert null to false 
+                    // since we expect boolean value in our AccountsTableProps that is why we need to convert it in boolean.
                 />
                 
                 <AddAdminDialog open= {open} setOpen= {setOpen}/>
