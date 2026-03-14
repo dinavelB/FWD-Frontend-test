@@ -5,6 +5,7 @@ import { requireAuth } from "@/lib/server/auth";
 import { UserProvider } from "@/components/shared/providers/UserContext";
 import AdminPanelLayout from "@/components/shared/layout/panel/admin-panel-layout";
 import type { Metadata } from "next";
+import QueryProvider from "@/components/shared/providers/Query-Provider";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -19,10 +20,12 @@ export default async function SuperAdminLayout({ children }: { children: ReactNo
   const user = await requireAuth();
 
   return (
-    <UserProvider user={user}>
-      <AdminPanelLayout>
-        {children}
-      </AdminPanelLayout>
-    </UserProvider>
-    );
+    <QueryProvider>
+      <UserProvider user={user}>
+        <AdminPanelLayout>
+          {children}
+        </AdminPanelLayout>
+      </UserProvider>
+    </QueryProvider>
+  );
 }

@@ -8,7 +8,7 @@ import type { AccountInfo } from "@/lib/types/account";
 type Action = {
   label: string;
   variant?: "destructive";      // for destructive styling
-  onClick?: (admin: AccountInfo) => void;
+  onClick?: (user: AccountInfo) => void;
 };
 
 // Map each status to allowed actions
@@ -36,12 +36,12 @@ const statusActions: Record<AccountInfo["status"], Action[]> = {
   ],
 };
 
-interface AdminActionsProps {
-  admin: AccountInfo;
+interface UserActionsProps {
+  account: AccountInfo;
 }
 
-export function Actions({ admin }: AdminActionsProps) {
-  const actions = statusActions[admin.status];
+export function Actions({ account }: UserActionsProps) {
+  const actions = statusActions[account.status];
 
   return (
     <DropdownMenu>
@@ -57,7 +57,7 @@ export function Actions({ admin }: AdminActionsProps) {
           <div key={action.label}>
             <DropdownMenuItem
               className={action.variant === "destructive" ? "text-red-500" : ""}
-              onClick={() => action.onClick?.(admin)}
+              onClick={() => action.onClick?.(account)}
             >
               {action.label}
             </DropdownMenuItem>

@@ -105,3 +105,7 @@ npx shadcn@latest add skeleton
 ### Table
 npx shadcn@latest add table
 npm install @tanstack/react-table
+
+## React Query
+npm install @tanstack/react-query
+- data-fetching and caching library for React

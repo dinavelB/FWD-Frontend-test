@@ -90,3 +90,40 @@ const context = useContext(UserContext);
 * Example: Sign up
 - tells browser that the user is creating a password and might suggest a strong one.
 <Input type="password" autoComplete="new-password">
+
+## React Query
+- data-fetching and caching library for React
+- instead of manually using useState + useEffect for api calls, react query :
+    * handles fetching, caching, and updating data automatically
+    * provides loading, error, and success states
+    * automatically refetches or invalidates queries when data changes
+    * works great with server state—data that lives on the backend and can change outside the app
+- react query concepts:
+    * Query → A single piece of data fetched from the server (e.g., accounts)
+    * Query Key → Unique ID for the query (used for caching)
+    * Query Function → Function that fetches the data (getAccounts)
+    * Mutation → Used for creating, updating, deleting server data
+    * Cache → Stores previously fetched data to avoid unnecessary requests
+    * Stale-While-Revalidate → React Query can show cached data while fetching new data in the background
+- how to set up:
+  * QueryClient 
+  - this is the core engine that stores all queries, caches, and configs
+  const queryClient = new QueryClient();
+
+  - we can store default options too:
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: 1000 * 60,  // 1 minute cache
+        retry: 1,               // retry once on failure
+      },
+    },
+  });
+
+  * QueryProvider 
+  - attach it layout.tsx to make queryClient available via react context to all children
+
+  * useQuery - fetch data
+  * useMutation - change data
+  
+
