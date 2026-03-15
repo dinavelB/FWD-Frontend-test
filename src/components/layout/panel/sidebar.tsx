@@ -9,7 +9,7 @@ import { useStore } from "@/lib/hooks/useStore";
 import { cn } from "@/lib/util/utils";
 import { useUser } from "@/components/providers/UserContext";
 import { RoleRoutes } from "@/lib/ui/sidebar/index"
-import { SidebarSignOut } from "@/features/auth/components/SidebarSignout";
+import { SidebarSignOut } from "@/components/shared/SidebarSignout";
 
 export function Sidebar() {
   const user = useUser();

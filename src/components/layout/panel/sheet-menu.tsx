@@ -15,7 +15,7 @@ import {
   SheetTitle
 } from "@/components/ui/sheet";
 import { RoleRoutes } from "@/lib/ui/sidebar/index";
-import { SheetSignOut } from "@/features/auth/components/SheetSignout";
+import { SheetSignOut } from "@/components/shared/SheetSignout";
 
 export function SheetMenu() {
   const user = useUser();
