@@ -1,4 +1,5 @@
-export function formatDateTime(dateString: string) {
+export function formatDateTime(dateString?: string |null) {
+  if (!dateString) return "-"
   // Remove the weekday and 'at'
   const cleaned = dateString.replace(/^\w+, /, "").replace(" at ", " ");
   const date = new Date(cleaned);
