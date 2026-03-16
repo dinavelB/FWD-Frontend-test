@@ -18,6 +18,8 @@ import { Eye, EyeOff } from "lucide-react";
 
 export default function Login() {
   const router = useRouter();
+  const [isRedirecting, setIsRedirecting] = useState(false);
+
   const {register, handleSubmit, formState: { errors, isSubmitting } } = useForm<LoginCredentials>();
 
   const [errorMsg, setErrorMsg] = useAutoDismiss<string>();
@@ -42,6 +44,7 @@ export default function Login() {
       }
       
       //redirect based on role
+      setIsRedirecting(true);
       if (user.role === UserRole.ADMIN) router.replace("/admin");
       else if (user.role === UserRole.SUPER_ADMIN) router.replace("/super-admin")
       else if (user.role === UserRole.EMPLOYEE) router.replace("/employee")
@@ -108,7 +111,7 @@ export default function Login() {
                   <FieldDescription className="text-center">
                     {errorMsg && <FormMessage variant="error" message={errorMsg} className="text-center fade-out"/>}
                 </FieldDescription>
-                <Button type="submit" disabled={isSubmitting}> {isSubmitting? "Logging in..." : "Log in"}</Button>
+                <Button type="submit" disabled={isSubmitting || isRedirecting}> {isSubmitting || isRedirecting? "Logging in..." : "Log in"}</Button>
               </Field>
             </FieldGroup>
           </form>

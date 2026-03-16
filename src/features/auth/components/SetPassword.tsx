@@ -22,6 +22,8 @@ type InvitationValues = {
 
 export default function SetPasswordForm({token, employeeId } : InvitationValues){
     const router = useRouter();
+    const [isRedirecting, setIsRedirecting] = useState(false);
+
     const { register, handleSubmit, formState: { errors, isSubmitting}} = 
     useForm<RegisterSchema>({
         resolver: zodResolver(registerSchema)
@@ -29,8 +31,10 @@ export default function SetPasswordForm({token, employeeId } : InvitationValues)
 
     const onSubmit = async (data: RegisterSchema) => {
         try {
-            await setPassword(token, data.password);
+            await setPassword(token, data.password);            
+            setIsRedirecting(true);
             toast.success("Your account has been activated! Redirecting you to login...")
+
             setTimeout(() => {
                 router.replace("/");
             }, 3000);
@@ -111,8 +115,13 @@ export default function SetPasswordForm({token, employeeId } : InvitationValues)
                             </Field> 
 
                             <Field>
-                                <Button type="submit" disabled={isSubmitting}>
-                                    {isSubmitting ? "Activating..." : "Activate Account"}
+                                <Button type="submit" disabled={isSubmitting || isRedirecting}>
+                                    {isSubmitting 
+                                    ? "Activating..." 
+                                    : isRedirecting 
+                                    ? "Redirecting..."
+                                    : "Activate Account"
+                                    }
                                 </Button>
                             </Field>
                         </FieldGroup>

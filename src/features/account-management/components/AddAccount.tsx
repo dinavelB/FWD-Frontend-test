@@ -11,7 +11,6 @@ import { FormMessage } from "@/components/ui/form-message"
 import { AddAccountFormValues } from "@/features/account-management/types/add-account";
 
 import { useForm } from "react-hook-form";
-import { createAccount } from "@/features/account-management/api/addAccountApi";
 import { toast } from "sonner";
 import { UserRole } from "@/lib/types/roles"
 
@@ -24,7 +23,7 @@ type AddAccountFormProps = {
 
 export function AddAccountForm({ setOpen, role } : AddAccountFormProps) {
     const roleLabel = role === UserRole.ADMIN ? "Admin" : "Employee";
-    const {register, reset, handleSubmit, setError, formState: {errors, isSubmitting}} = useForm<AddAccountFormValues>();
+    const {register, reset, handleSubmit, setError, formState: {errors, }} = useForm<AddAccountFormValues>();
 
     const createAccountMutation = useCreateAccount();
 
@@ -92,8 +91,13 @@ export function AddAccountForm({ setOpen, role } : AddAccountFormProps) {
             </Field>
         
             <Field>
-                <Button type="submit" className="w-full" disabled={isSubmitting}> 
-                    {isSubmitting ? `Creating ${roleLabel}...` : `Create ${roleLabel}`}
+                <Button type="submit" className="w-full" 
+                disabled={createAccountMutation.isPending}
+                > 
+                    {createAccountMutation.isPending 
+                    ? `Creating ${roleLabel}...` 
+                    : `Create ${roleLabel}`
+                    }
                 </Button>
             </Field>
         </FieldGroup>
